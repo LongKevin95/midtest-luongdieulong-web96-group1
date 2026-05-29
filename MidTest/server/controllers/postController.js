@@ -65,7 +65,7 @@ const updatePost = async (req, res) => {
     if (post.userId !== req.user.userId) {
       return res.status(403).json({
         success: false,
-        message: "You are not this post author!",
+        message: "Unauthorized/Not this post author!",
         data: null,
       });
     }
