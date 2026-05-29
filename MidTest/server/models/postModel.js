@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 const postSchema = new mongoose.Schema({
-  id: { type: String, required: true, undefined },
+  id: { type: String, required: true, unique: true },
   userId: { type: String, required: true },
   title: { type: String, required: true },
   content: { type: String, required: true },

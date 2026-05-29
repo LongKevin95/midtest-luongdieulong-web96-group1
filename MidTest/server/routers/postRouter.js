@@ -4,7 +4,12 @@ import authMiddleware from "../middlewares/auth.js";
 
 const router = express.Router();
 
-router.post("/", authMiddleware.verifyApiKey, postController.createPost);
-router.put("/:id", authMiddleware.verifyApiKey, postController.updatePost);
+router.post("/", authMiddleware.authentication, postController.createPost);
+router.put(
+  "/:id",
+  authMiddleware.authentication,
+  authMiddleware.authorizePostOwner,
+  postController.updatePost,
+);
 
 export default router;

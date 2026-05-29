@@ -50,7 +50,8 @@ const loginUser = async (req, res) => {
         data: null,
       });
     }
-    const user = await User.findOne({ email });
+    const lowerEmail = email.toLowerCase();
+    const user = await User.findOne({ email: lowerEmail });
     if (!user) {
       return res.status(401).json({
         success: false,
@@ -73,7 +74,7 @@ const loginUser = async (req, res) => {
     await user.save();
 
     res.status(200).json({
-      user,
+      apiKey,
     });
   } catch (error) {
     res

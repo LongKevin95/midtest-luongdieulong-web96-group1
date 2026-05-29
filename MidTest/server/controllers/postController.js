@@ -72,25 +72,8 @@ const createPost = async (req, res) => {
 const updatePost = async (req, res) => {
   try {
     const { title, content } = req.body;
-    const { id } = req.params;
 
-    const post = await Post.findOne({ id });
-
-    if (!post) {
-      return res.status(404).json({
-        success: false,
-        message: "Post not found",
-        data: null,
-      });
-    }
-
-    if (post.userId !== req.user.userId) {
-      return res.status(403).json({
-        success: false,
-        message: "Unauthorized/Not this post author!",
-        data: null,
-      });
-    }
+    const post = req.post;
 
     if (title !== undefined) {
       post.title = title;
