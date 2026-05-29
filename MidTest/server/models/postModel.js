@@ -1,0 +1,11 @@
+import mongoose from "mongoose";
+const postSchema = new mongoose.Schema({
+  id: { type: String, required: true, undefined },
+  userId: { type: String, required: true },
+  title: { type: String, required: true },
+  content: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now },
+});
+const Post = mongoose.model("posts", postSchema);
+export default Post;
