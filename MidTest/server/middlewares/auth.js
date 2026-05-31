@@ -18,7 +18,8 @@ const authMiddleware = {
 
       if (!user) {
         return res.status(401).json({
-          message: "User not found",
+          message:
+            "Authentication failed - Invalid API key/Current user not found by the API key",
           data: null,
           success: false,
         });
